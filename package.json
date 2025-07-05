@@ -1,0 +1,17 @@
+{
+  "name": "carbon-footprint-calculator",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "tailwindcss -i ./src/styles/main.css -o ./dist/output.css --watch",
+    "dev": "vite",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.10",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.3.5",
+    "vite": "^4.4.9"
+  }
+}
