@@ -1,13 +1,36 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calculadora de Huella de Carbono</title>
-  <link href="/dist/output.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Huella de Carbono</title>
+    <link rel="stylesheet" href="/src/styles/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="bg-gray-50">
-  <div id="app" class="container mx-auto px-4 py-8 max-w-4xl"></div>
-  <script type="module" src="./src/app.js"></script>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Calculadora de Huella de Carbono</h1>
+            <p>Descubre cuánto CO₂ produces y aprende cómo reducir tu impacto ambiental</p>
+        </header>
+
+        <main>
+            <div class="grid-container">
+                <div class="main-content">
+                    <div id="formSection" class="card"></div>
+                    <div id="resultsSection" class="card"></div>
+                </div>
+                <div class="sidebar">
+                    <div id="tipsSection" class="card"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="/src/js/components/FormSection.js"></script>
+    <script src="/src/js/components/Results.js"></script>
+    <script src="/src/js/components/Tips.js"></script>
+    <script src="/src/js/utils/calculations.js"></script>
+    <script src="/src/js/main.js"></script>
 </body>
 </html>
