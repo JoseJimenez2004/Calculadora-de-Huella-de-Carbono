@@ -1,0 +1,152 @@
+// Variables
+$color-primary: #2ECC71;
+$color-secondary: #3498DB;
+$color-dark: #2C3E50;
+$color-light: #F5F7FA;
+$shadow-deep: 0 10px 30px rgba(0, 0, 0, 0.2);
+$transition-all: all 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+
+// Base styles
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  overflow-x: hidden;
+  background-color: $color-dark;
+}
+
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, $color-dark 0%, lighten($color-dark, 10%) 100%);
+  color: white;
+  
+  &-content {
+    text-align: center;
+    z-index: 2;
+    padding: 2rem;
+    max-width: 800px;
+  }
+}
+
+.title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 4.5rem;
+  margin-bottom: 1rem;
+  letter-spacing: -1px;
+  
+  span {
+    color: $color-primary;
+  }
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 3rem;
+  opacity: 0.9;
+}
+
+.cta-button {
+  background: linear-gradient(135deg, $color-primary 0%, $color-secondary 100%);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 1rem 3rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: $transition-all;
+  box-shadow: $shadow-deep;
+  position: relative;
+  overflow: hidden;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    
+    &::after {
+      transform: translateX(100%);
+    }
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transform: translateX(-100%);
+    transition: $transition-all;
+  }
+}
+
+.earth-animation {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: url('https://cdn.pixabay.com/photo/2016/04/25/18/07/globe-1352510_960_720.png') center/cover;
+  border-radius: 50%;
+  box-shadow: 
+    0 0 60px rgba($color-primary, 0.4),
+    inset 0 0 40px rgba(0, 0, 0, 0.5);
+  animation: rotate 30s linear infinite;
+  opacity: 0.8;
+  z-index: 1;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border-radius: 50%;
+    background: radial-gradient(circle, transparent 60%, rgba($color-primary, 0.3) 100%);
+    z-index: -1;
+  }
+}
+
+.transition-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: $color-primary;
+  z-index: 1000;
+  transform: translateY(100%);
+  pointer-events: none;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .title {
+    font-size: 3rem;
+  }
+  
+  .subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .earth-animation {
+    width: 200px;
+    height: 200px;
+  }
+}
