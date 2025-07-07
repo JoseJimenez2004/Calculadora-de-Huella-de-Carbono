@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculadora de Huella de Carbono - Desktops</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/src/style/css/desktops.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="categories.html" class="back-button">
+        <i class="fas fa-arrow-left"></i>
+        <span>Regresar</span>
+      </a>
+      <div class="navbar-title">EcoCalculadora</div>
+      <div class="navbar-placeholder"></div>
+    </div>
+  </nav>
+
+  <header class="calculator-header">
+    <div class="header-content">
+      <h1>Calculadora para Computadoras de Escritorio</h1>
+      <p>Analiza el impacto ambiental de tus equipos de trabajo</p>
+    </div>
+    <div class="header-icon">
+      <i class="fas fa-desktop"></i>
+    </div>
+  </header>
+
+  <main class="calculator-container">
+    <section class="search-components animated-section">
+      <div class="section-header">
+        <h2><i class="fas fa-search"></i> Buscar Componentes</h2>
+        <div class="tooltip">
+          <i class="fas fa-info-circle"></i>
+          <span class="tooltip-text">Busca y selecciona los componentes de tu equipo</span>
+        </div>
+      </div>
+      
+      <div class="search-box">
+        <input type="text" id="componentSearch" placeholder="Ej: Intel i7, RTX 3080..." />
+        <i class="fas fa-search search-icon"></i>
+        <div class="search-results" id="searchResults"></div>
+      </div>
+      
+      <div class="selected-components" id="selectedComponents">
+        <div class="components-header">
+          <h3><i class="fas fa-list-check"></i> Componentes seleccionados</h3>
+          <span class="badge" id="componentsCount">0</span>
+        </div>
+        <div class="components-list"></div>
+        <div class="tdp-summary">
+          <div class="tdp-visual">
+            <div class="tdp-gauge" id="tdpGauge"></div>
+          </div>
+          <p class="tdp-total">Consumo estimado: <strong><span id="tdpTotal">0</span>W</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="usage-params animated-section">
+      <div class="section-header">
+        <h2><i class="fas fa-sliders-h"></i> Parámetros de Uso</h2>
+        <div class="tooltip">
+          <i class="fas fa-info-circle"></i>
+          <span class="tooltip-text">Configura cómo utilizas tu equipo</span>
+        </div>
+      </div>
+      
+      <div class="param-group">
+        <label for="hours">
+          <i class="far fa-clock"></i> Horas de uso diario
+          <span id="hoursValue" class="value-display">4</span>
+        </label>
+        <input type="range" id="hours" min="1" max="24" value="4" class="styled-slider" />
+        <div class="slider-labels">
+          <span>1h</span>
+          <span>12h</span>
+          <span>24h</span>
+        </div>
+      </div>
+      
+      <div class="param-group">
+        <label for="country"><i class="fas fa-globe-americas"></i> País</label>
+        <div class="select-wrapper">
+          <select id="country"></select>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+      </div>
+      
+      <div class="param-group checkbox-group">
+        <input type="checkbox" id="includeManufacturing" />
+        <label for="includeManufacturing">
+          <span class="custom-checkbox"></span>
+          <i class="fas fa-industry"></i> Incluir huella de fabricación
+        </label>
+      </div>
+    </section>
+
+    <section class="results-section animated-section">
+      <div class="section-header">
+        <h2><i class="fas fa-chart-bar"></i> Resultados</h2>
+        <div class="tooltip">
+          <i class="fas fa-info-circle"></i>
+          <span class="tooltip-text">Tu impacto ambiental anual</span>
+        </div>
+      </div>
+      
+      <div class="result-card">
+        <div class="result-value">
+          <div class="co2-icon">
+            <i class="fas fa-cloud"></i>
+          </div>
+          <div>
+            <p class="result-label">Huella anual estimada</p>
+            <h3><span id="co2Result">0</span> <small>kg CO₂eq</small></h3>
+          </div>
+        </div>
+        <div class="equivalent" id="equivalent">
+          <i class="fas fa-leaf"></i>
+          <span>Equivalente a 0 km en auto</span>
+        </div>
+      </div>
+      
+      <div class="visualization">
+        <div class="graph-container">
+          <div class="graph-header">
+            <h4>Distribución por componente</h4>
+            <div class="graph-legend" id="graphLegend"></div>
+          </div>
+          <div class="graph" id="impactChart"></div>
+        </div>
+        
+        <div class="comparison">
+          <h4>Comparación con estándares</h4>
+          <div class="comparison-bars">
+            <div class="bar your-bar">
+              <div class="bar-label">Tu equipo</div>
+              <div class="bar-container">
+                <div class="bar-fill" style="width: 0%"></div>
+                <span class="bar-value">0 kg</span>
+              </div>
+            </div>
+            <div class="bar avg-bar">
+              <div class="bar-label">Promedio</div>
+              <div class="bar-container">
+                <div class="bar-fill" style="width: 70%"></div>
+                <span class="bar-value">210 kg</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="action-buttons">
+      <button id="resetCalculator" class="btn-secondary">
+        <i class="fas fa-redo"></i> Reiniciar
+      </button>
+      <button id="generateReport" class="btn-primary">
+        <i class="fas fa-file-pdf"></i> Generar Reporte
+      </button>
+    </div>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="/src/utils/data.js"></script>
+  <script src="/src/components/desktops.js"></script>
+</body>
+</html>

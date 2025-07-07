@@ -13,10 +13,30 @@ document.addEventListener('DOMContentLoaded', () => {
       const category = card.getAttribute('data-category');
       setTimeout(() => {
         switch(category) {
-          case 'tecnologia':
-            window.location.href = 'calculator.html';
+          case 'servidores-fisicos':
+            window.location.href = 'servidores-fisicos.html';
             break;
-          // Aquí puedes añadir las demás categorías
+          case 'servidores-nube':
+            window.location.href = 'servidores-nube.html';
+            break;
+          case 'laptops':
+            window.location.href = 'laptops.html';
+            break;
+          case 'desktops':
+            window.location.href = 'desktops.html';
+            break;
+          case 'celulares':
+            window.location.href = 'celulares.html';
+            break;
+          case 'instalaciones':
+            window.location.href = 'instalaciones.html';
+            break;
+          case 'tablets':
+            window.location.href = 'tablets.html';
+            break;
+          case 'transporte':
+            window.location.href = 'transporte.html';
+            break;
           default:
             window.location.href = 'calculator.html';
         }
