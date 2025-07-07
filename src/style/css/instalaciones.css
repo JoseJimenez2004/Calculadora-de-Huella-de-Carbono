@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* Variables */
 :root {
   --color-primary: #2ECC71;
@@ -15,7 +16,7 @@
 
 /* Estilos generales */
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   background-color: var(--color-gray);
   color: var(--color-dark);
   margin: 0;
@@ -42,7 +43,7 @@ body {
 }
 
 .navbar-title {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 800;
   font-size: 1.2rem;
   color: var(--color-primary);
@@ -76,7 +77,7 @@ body {
 }
 
 .calculator-header::before {
-  content: '';
+  content: "";
   position: absolute;
   top: -50px;
   right: -50px;
@@ -92,7 +93,7 @@ body {
 }
 
 .header-content h1 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 800;
   font-size: 1.8rem;
   margin-bottom: 0.5rem;
@@ -154,7 +155,6 @@ body {
     transform: translateY(0);
   }
 }
-
 .section-header {
   display: flex;
   align-items: center;
@@ -164,7 +164,7 @@ body {
 }
 
 .section-header h2 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 1.2rem;
   margin: 0;
   display: flex;
@@ -304,7 +304,7 @@ body {
   transition: var(--transition-all);
 }
 
-.checkbox-group input[type="checkbox"] {
+.checkbox-group input[type=checkbox] {
   position: absolute;
   opacity: 0;
   cursor: pointer;
@@ -387,7 +387,7 @@ body {
 }
 
 .result-value h3 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 2rem;
   color: var(--color-primary);
   margin: 0;
@@ -586,29 +586,26 @@ body {
     grid-template-columns: 1fr;
     padding: 1rem;
   }
-  
   .results-section {
     grid-column: span 1;
   }
-  
   .action-buttons {
     flex-direction: column;
   }
-  
   .btn-primary, .btn-secondary {
     width: 100%;
     justify-content: center;
   }
-  
   .calculator-header {
     flex-direction: column;
     text-align: center;
     gap: 1rem;
   }
-  
   .header-icon {
     font-size: 2rem;
     opacity: 0.3;
     transform: rotate(0deg);
   }
 }
+
+/*# sourceMappingURL=instalaciones.css.map */
