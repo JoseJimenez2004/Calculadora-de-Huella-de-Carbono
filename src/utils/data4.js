@@ -1,0 +1,145 @@
+window.CalculatorData = {
+  components: {
+    cpu: {
+      "Intel Xeon Platinum 8480+": { tdp: 350, co2Manufacturing: 1200 },
+      "AMD EPYC 9654": { tdp: 360, co2Manufacturing: 1250 },
+      "Intel Xeon Gold 6430": { tdp: 270, co2Manufacturing: 950 },
+      "AMD EPYC 7773X": { tdp: 280, co2Manufacturing: 980 },
+      "Amazon Graviton3": { tdp: 200, co2Manufacturing: 800 },
+      "Ampere Altra Max": { tdp: 180, co2Manufacturing: 750 },
+      "IBM Power10": { tdp: 400, co2Manufacturing: 1400 }
+    },
+    gpu: {
+      "NVIDIA H100": { tdp: 700, co2Manufacturing: 1800 },
+      "NVIDIA A100": { tdp: 400, co2Manufacturing: 1200 },
+      "AMD Instinct MI250X": { tdp: 560, co2Manufacturing: 1500 },
+      "Intel Ponte Vecchio": { tdp: 600, co2Manufacturing: 1600 },
+      "NVIDIA T4": { tdp: 70, co2Manufacturing: 400 }
+    },
+    ram: {
+      "64GB DDR4": { tdp: 15, co2Manufacturing: 120 },
+      "128GB DDR4": { tdp: 30, co2Manufacturing: 200 },
+      "256GB DDR4": { tdp: 45, co2Manufacturing: 300 },
+      "512GB DDR4": { tdp: 60, co2Manufacturing: 400 },
+      "64GB DDR5": { tdp: 12, co2Manufacturing: 150 },
+      "128GB DDR5": { tdp: 25, co2Manufacturing: 250 },
+      "256GB DDR5": { tdp: 40, co2Manufacturing: 350 },
+      "512GB DDR5": { tdp: 55, co2Manufacturing: 450 }
+    },
+    storage: {
+      "480GB SSD SATA": { tdp: 5, co2Manufacturing: 80 },
+      "960GB SSD SATA": { tdp: 8, co2Manufacturing: 120 },
+      "1.92TB SSD SATA": { tdp: 10, co2Manufacturing: 150 },
+      "480GB SSD NVMe": { tdp: 7, co2Manufacturing: 100 },
+      "960GB SSD NVMe": { tdp: 9, co2Manufacturing: 140 },
+      "1.92TB SSD NVMe": { tdp: 12, co2Manufacturing: 180 },
+      "3.84TB SSD NVMe": { tdp: 15, co2Manufacturing: 250 },
+      "7.68TB SSD NVMe": { tdp: 20, co2Manufacturing: 350 },
+      "10TB HDD": { tdp: 8, co2Manufacturing: 60 },
+      "16TB HDD": { tdp: 10, co2Manufacturing: 80 },
+      "20TB HDD": { tdp: 12, co2Manufacturing: 100 }
+    },
+    psu: {
+      "800W Platinum": { tdp: 10, co2Manufacturing: 150 },
+      "1200W Platinum": { tdp: 15, co2Manufacturing: 200 },
+      "1600W Platinum": { tdp: 20, co2Manufacturing: 250 },
+      "2000W Platinum": { tdp: 25, co2Manufacturing: 300 },
+      "3000W Titanium": { tdp: 30, co2Manufacturing: 400 }
+    },
+    cooling: {
+      "Air Cooling Standard": { tdp: 50, co2Manufacturing: 100 },
+      "Air Cooling High Performance": { tdp: 80, co2Manufacturing: 150 },
+      "Liquid Cooling Standard": { tdp: 30, co2Manufacturing: 200 },
+      "Liquid Cooling High Performance": { tdp: 50, co2Manufacturing: 300 },
+      "Immersion Cooling": { tdp: 20, co2Manufacturing: 500 }
+    }
+  },
+  serverTypes: {
+    "Rack Server 1U": { baseTdp: 100, baseCo2: 300 },
+    "Rack Server 2U": { baseTdp: 150, baseCo2: 400 },
+    "Rack Server 4U": { baseTdp: 200, baseCo2: 500 },
+    "Blade Server": { baseTdp: 120, baseCo2: 350 },
+    "Tower Server": { baseTdp: 180, baseCo2: 450 },
+    "Hyperconverged System": { baseTdp: 300, baseCo2: 700 },
+    "Storage Server": { baseTdp: 250, baseCo2: 600 }
+  },
+  cloudProviders: {
+    "AWS EC2 (General Purpose)": { tdp: 200, co2Manufacturing: 400, sharedResourceFactor: 0.3 },
+    "AWS EC2 (Compute Optimized)": { tdp: 350, co2Manufacturing: 600, sharedResourceFactor: 0.4 },
+    "Azure Virtual Machines (General)": { tdp: 180, co2Manufacturing: 380, sharedResourceFactor: 0.3 },
+    "Azure Virtual Machines (Memory Optimized)": { tdp: 300, co2Manufacturing: 550, sharedResourceFactor: 0.4 },
+    "Google Compute Engine (Standard)": { tdp: 190, co2Manufacturing: 370, sharedResourceFactor: 0.25 },
+    "Google Compute Engine (High CPU)": { tdp: 320, co2Manufacturing: 580, sharedResourceFactor: 0.35 },
+    "IBM Cloud Virtual Servers": { tdp: 220, co2Manufacturing: 450, sharedResourceFactor: 0.3 },
+    "Oracle Cloud VM": { tdp: 210, co2Manufacturing: 420, sharedResourceFactor: 0.3 },
+    "DigitalOcean Droplets": { tdp: 150, co2Manufacturing: 300, sharedResourceFactor: 0.2 },
+    "Linode Cloud Instances": { tdp: 140, co2Manufacturing: 290, sharedResourceFactor: 0.2 },
+    "Vultr Cloud Compute": { tdp: 160, co2Manufacturing: 310, sharedResourceFactor: 0.25 },
+    "Alibaba Cloud ECS": { tdp: 230, co2Manufacturing: 470, sharedResourceFactor: 0.35 }
+  },
+  facilities: {
+    power: {
+      "Grid Electricity": { co2PerKwh: 0.5, waterUsagePerKwh: 0.001 },
+      "Solar Power": { co2PerKwh: 0.05, waterUsagePerKwh: 0.0001 },
+      "Wind Power": { co2PerKwh: 0.02, waterUsagePerKwh: 0.00001 },
+      "Hydro Power": { co2PerKwh: 0.01, waterUsagePerKwh: 0.5 },
+      "Nuclear Power": { co2PerKwh: 0.01, waterUsagePerKwh: 0.002 },
+      "Natural Gas": { co2PerKwh: 0.45, waterUsagePerKwh: 0.0005 },
+      "Diesel Generator": { co2PerKwh: 0.8, waterUsagePerKwh: 0.0008 }
+    },
+    coolingSystems: {
+      "Chilled Water": { powerEfficiency: 0.7, waterUsagePerKw: 0.02 },
+      "Direct Expansion": { powerEfficiency: 0.8, waterUsagePerKw: 0.001 },
+      "Evaporative Cooling": { powerEfficiency: 0.9, waterUsagePerKw: 0.05 },
+      "Free Cooling": { powerEfficiency: 0.95, waterUsagePerKw: 0.0001 },
+      "Liquid Immersion": { powerEfficiency: 0.85, waterUsagePerKw: 0.005 }
+    },
+    waterSources: {
+      "Municipal Water": { co2PerLiter: 0.001, energyPerLiter: 0.003 },
+      "Groundwater": { co2PerLiter: 0.0005, energyPerLiter: 0.002 },
+      "Rainwater Harvesting": { co2PerLiter: 0.0001, energyPerLiter: 0.001 },
+      "Recycled Water": { co2PerLiter: 0.0003, energyPerLiter: 0.0015 },
+      "Desalinated Water": { co2PerLiter: 0.005, energyPerLiter: 0.01 }
+    },
+    networkInfrastructure: {
+      "Fiber Optic": { powerPerGbps: 0.5, co2Manufacturing: 200 },
+      "Copper Cable": { powerPerGbps: 1.2, co2Manufacturing: 150 },
+      "Wireless 5G": { powerPerGbps: 0.8, co2Manufacturing: 180 },
+      "Microwave": { powerPerGbps: 1.5, co2Manufacturing: 120 },
+      "Satellite": { powerPerGbps: 2.0, co2Manufacturing: 250 }
+    },
+    dataCenterTiers: {
+      "Tier I": { pue: 2.0, waterUsageEffectiveness: 2.5 },
+      "Tier II": { pue: 1.8, waterUsageEffectiveness: 2.0 },
+      "Tier III": { pue: 1.5, waterUsageEffectiveness: 1.5 },
+      "Tier IV": { pue: 1.3, waterUsageEffectiveness: 1.2 }
+    }
+  },
+  countries: {
+    "México": { 
+      electricityCo2: 0.45, 
+      waterCo2: 0.002,
+      networkCarbonIntensity: 0.1
+    },
+    "España": { 
+      electricityCo2: 0.22, 
+      waterCo2: 0.0015,
+      networkCarbonIntensity: 0.08
+    },
+    "Estados Unidos": { 
+      electricityCo2: 0.38, 
+      waterCo2: 0.0018,
+      networkCarbonIntensity: 0.12
+    },
+    "Alemania": { 
+      electricityCo2: 0.40, 
+      waterCo2: 0.0012,
+      networkCarbonIntensity: 0.09
+    },
+    "China": { 
+      electricityCo2: 0.68, 
+      waterCo2: 0.003,
+      networkCarbonIntensity: 0.15
+    }
+  }
+};
