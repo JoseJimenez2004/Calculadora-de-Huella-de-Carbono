@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculadora de Huella de Carbono - Servidores</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/src/style/css/servidores-fisicos.css" />
+
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="categories.html" class="back-button">
+        <i class="fas fa-arrow-left"></i>
+        <span>Regresar</span>
+      </a>
+      <div class="navbar-title">EcoCalculadora</div>
+      <div class="navbar-placeholder"></div>
+    </div>
+  </nav>
+
+  <header class="calculator-header">
+    <div class="header-content">
+      <h1>Calculadora para Servidores</h1>
+      <p>Analiza el impacto ambiental de tus equipos de servidores físicos</p>
+    </div>
+    <div class="header-icon">
+      <i class="fas fa-server"></i>
+    </div>
+  </header>
+
+  <main class="calculator-container">
+    <section class="server-configuration animated-section">
+      <div class="section-header">
+        <h2><i class="fas fa-cog"></i> Configuración del Servidor</h2>
+      </div>
+      
+      <div class="param-group">
+        <label for="serverType"><i class="fas fa-server"></i> Tipo de Servidor</label>
+        <div class="select-wrapper">
+          <select id="serverType"></select>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+         <div class="param-group">
+        <label for="serverCount"><i class="fas fa-calculator"></i> Cantidad de Servidores</label>
+        <input type="number" id="serverCount" min="1" value="1" class="styled-input" />
+      </div>
+      </div>
+       <section class="search-components animated-section">
+      <div class="section-header">
+        <h2><i class="fas fa-search"></i> Buscar Componentes</h2>
+        <div class="tooltip">
+          <i class="fas fa-info-circle"></i>
+          <span class="tooltip-text">Selecciona una categoría y luego el componente</span>
+        </div>
+      </div>
+     
+    </section>
+
+   
+      
+      <div class="category-selector">
+        <div class="select-wrapper">
+          <select id="componentCategory">
+            <option value="">Selecciona una categoría</option>
+            <option value="cpu">Procesador (CPU)</option>
+            <option value="gpu">GPU</option>
+            <option value="ram">RAM</option>
+            <option value="storage">Almacenamiento</option>
+            <option value="psu">Fuente de Poder</option>
+            <option value="cooling">Refrigeración</option>
+          </select>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        
+        <div class="select-wrapper">
+          <select id="componentSelect" disabled>
+            <option value="">Primero selecciona una categoría</option>
+          </select>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        
+        <button id="addComponent" class="btn-add" disabled>
+          <i class="fas fa-plus"></i> Añadir
+        </button>
+      </div>
+      
+      <div class="selected-components" id="selectedComponents">
+        <div class="components-header">
+          <h3><i class="fas fa-list-check"></i> Componentes seleccionados</h3>
+          <span class="badge" id="componentsCount">0</span>
+        </div>
+        <div class="components-list"></div>
+        <div class="tdp-summary">
+          <div class="tdp-visual">
+            <div class="tdp-gauge" id="tdpGauge"></div>
+          </div>
+          <p class="tdp-total">Consumo estimado: <strong><span id="tdpTotal">0</span>W</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="usage-params animated-section">
+      <div class="section-header">
+        <h2><i class="fas fa-sliders-h"></i> Parámetros de Uso</h2>
+        <div class="tooltip">
+          <i class="fas fa-info-circle"></i>
+          <span class="tooltip-text">Configura cómo utilizas tus servidores</span>
+        </div>
+      </div>
+      
+      <div class="param-group">
+        <label for="uptime">
+          <i class="fas fa-clock"></i> Uptime (horas/día)
+          <span id="uptimeValue" class="value-display">24</span>
+        </label>
+        <input type="range" id="uptime" min="1" max="24" value="24" class="styled-slider" />
+        <div class="slider-labels">
+          <span>1h</span>
+          <span>12h</span>
+          <span>24h</span>
+        </div>
+      </div>
+      
+      <div class="param-group">
+        <label for="utilization">
+          <i class="fas fa-tachometer-alt"></i> Utilización promedio
+          <span id="utilizationValue" class="value-display">70</span>%
+        </label>
+        <input type="range" id="utilization" min="10" max="100" value="70" class="styled-slider" />
+        <div class="slider-labels">
+          <span>10%</span>
+          <span>50%</span>
+          <span>100%</span>
+        </div>
+      </div>
+      
+      <div class="param-group">
+        <label for="country"><i class="fas fa-globe-americas"></i> Ubicación del Data Center</label>
+        <div class="select-wrapper">
+          <select id="country"></select>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+      </div>
+      
+      <div class="param-group checkbox-group">
+        <input type="checkbox" id="includeManufacturing" checked />
+        <label for="includeManufacturing">
+          <span class="custom-checkbox"></span>
+          <i class="fas fa-industry"></i> Incluir huella de fabricación
+        </label>
+      </div>
+      
+      <div class="param-group checkbox-group">
+        <input type="checkbox" id="includeCooling" checked />
+        <label for="includeCooling">
+          <span class="custom-checkbox"></span>
+          <i class="fas fa-fan"></i> Incluir consumo de refrigeración
+        </label>
+      </div>
+    </section>
+
+    <section class="results-section animated-section">
+      <div class="section-header">
+        <h2><i class="fas fa-chart-bar"></i> Resultados</h2>
+        <div class="tooltip">
+          <i class="fas fa-info-circle"></i>
+          <span class="tooltip-text">Tu impacto ambiental anual</span>
+        </div>
+      </div>
+      
+      <div class="result-card">
+        <div class="result-value">
+          <div class="co2-icon">
+            <i class="fas fa-cloud"></i>
+          </div>
+          <div>
+            <p class="result-label">Huella anual estimada</p>
+            <h3><span id="co2Result">0</span> <small>kg CO₂eq</small></h3>
+          </div>
+        </div>
+        <div class="equivalent" id="equivalent">
+          <i class="fas fa-leaf"></i>
+          <span>Equivalente a 0 km en auto</span>
+        </div>
+      </div>
+      
+      
+        
+        <div class="comparison">
+          <h4>Comparación con estándares</h4>
+          <div class="comparison-bars">
+            <div class="bar your-bar">
+              <div class="bar-label">Tu servidor</div>
+              <div class="bar-container">
+                <div class="bar-fill" style="width: 0%"></div>
+                <span class="bar-value">0 kg</span>
+              </div>
+            </div>
+            <div class="bar avg-bar">
+              <div class="bar-label">Servidor promedio</div>
+              <div class="bar-container">
+                <div class="bar-fill" style="width: 70%"></div>
+                <span class="bar-value">2100 kg</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="action-buttons">
+      <button id="resetCalculator" class="btn-secondary">
+        <i class="fas fa-redo"></i> Reiniciar
+      </button>
+      <button id="generateReport" class="btn-primary">
+        <i class="fas fa-file-pdf"></i> Generar Reporte
+      </button>
+    </div>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="/src/utils/data2.js"></script>
+  <script src="/src/components/servidores-fisicos.js"></script>
+</body>
+</html>
