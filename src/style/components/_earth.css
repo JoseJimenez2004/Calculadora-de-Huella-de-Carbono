@@ -1,0 +1,42 @@
+.earth-container {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  z-index: 1;
+  animation: earth-float 15s ease-in-out infinite;
+}
+
+.earth-animation {
+  width: 100%;
+  height: 100%;
+  background: url('https://cdn.pixabay.com/photo/2016/04/25/18/07/globe-1352510_960_720.png') center/cover;
+  border-radius: 50%;
+  box-shadow: 
+    0 0 80px rgba(46, 204, 113, 0.6),
+    inset 0 0 60px rgba(0, 0, 0, 0.8),
+    0 0 0 5px rgba(255,255,255,0.1);
+  animation: rotate 30s linear infinite;
+  position: relative;
+  z-index: 2;
+}
+
+.ring {
+  position: absolute;
+  width: 120%;
+  height: 20px;
+  background: transparent;
+  border: 5px solid rgba(52, 152, 219, 0.4);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotateX(75deg);
+  animation: ring-rotate 20s linear infinite;
+}
+
+.ring.outer {
+  width: 150%;
+  height: 30px;
+  border-color: rgba(241, 196, 15, 0.3);
+  animation-direction: reverse;
+  animation-duration: 25s;
+}

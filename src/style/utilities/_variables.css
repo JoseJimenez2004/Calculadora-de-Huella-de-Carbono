@@ -1,0 +1,19 @@
+:root {
+  /* Colores */
+  --color-primary: #2ECC71;
+  --color-secondary: #3498DB;
+  --color-accent: #F1C40F;
+  --color-accent2: #E74C3C;
+  --color-dark: #1a2a3a;
+  --color-light: #F5F7FA;
+  
+  /* Sombras */
+  --shadow-deep: 0 10px 30px rgba(0, 0, 0, 0.3);
+  
+  /* Transiciones */
+  --transition-all: all 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+  
+  /* Tipografía */
+  --font-heading: 'Press Start 2P', cursive;
+  --font-body: 'Montserrat', sans-serif;
+}
