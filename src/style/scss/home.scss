@@ -1,18 +1,47 @@
-// Variables
+// Variables extendidas
 $color-primary: #2ECC71;
 $color-secondary: #3498DB;
-$color-dark: #2C3E50;
+$color-accent: #F1C40F;
+$color-accent2: #E74C3C;
+$color-dark: #1a2a3a;
 $color-light: #F5F7FA;
-$shadow-deep: 0 10px 30px rgba(0, 0, 0, 0.2);
+$shadow-deep: 0 10px 30px rgba(0, 0, 0, 0.3);
 $transition-all: all 0.5s cubic-bezier(0.65, 0, 0.35, 1);
 
-// Base styles
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Roboto', sans-serif;
-  overflow-x: hidden;
-  background-color: $color-dark;
+// Estrellas de fondo
+.star-field {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  
+  .layer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      radial-gradient(1px 1px at 50px 100px, white, rgba(0,0,0,0)),
+      radial-gradient(1px 1px at 150px 50px, white, rgba(0,0,0,0)),
+      radial-gradient(1px 1px at 250px 150px, white, rgba(0,0,0,0));
+    background-repeat: repeat;
+    animation: star-anim 50s linear infinite;
+    
+    &:nth-child(2) {
+      animation-duration: 100s;
+      background-image: 
+        radial-gradient(1px 1px at 75px 125px, white, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 175px 75px, white, rgba(0,0,0,0));
+    }
+    
+    &:nth-child(3) {
+      animation-duration: 150s;
+      background-image: 
+        radial-gradient(1px 1px at 125px 175px, white, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 225px 125px, white, rgba(0,0,0,0));
+    }
+  }
 }
 
 .hero {
@@ -22,52 +51,87 @@ body {
   justify-content: center;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, $color-dark 0%, lighten($color-dark, 10%) 100%);
+  background: linear-gradient(135deg, darken($color-dark, 10%) 0%, $color-dark 100%);
   color: white;
+  perspective: 1000px;
   
   &-content {
     text-align: center;
-    z-index: 2;
+    z-index: 10;
     padding: 2rem;
     max-width: 800px;
+    position: relative;
   }
 }
 
 .title {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Press Start 2P', cursive;
   font-weight: 800;
   font-size: 4.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   letter-spacing: -1px;
+  text-shadow: 5px 5px 0 rgba(0,0,0,0.2),
+               0 0 20px rgba($color-primary, 0.5);
+  transform-style: preserve-3d;
+  animation: title-float 6s ease-in-out infinite;
   
   span {
-    color: $color-primary;
+    color: $color-accent;
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: $color-primary;
+      animation: span-underline 3s ease-in-out infinite;
+    }
   }
 }
 
 .subtitle {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   margin-bottom: 3rem;
   opacity: 0.9;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  font-family: 'Montserrat', sans-serif;
+  animation: subtitle-shake 8s ease-in-out infinite;
 }
 
 .cta-button {
-  background: linear-gradient(135deg, $color-primary 0%, $color-secondary 100%);
-  color: white;
+  background: linear-gradient(135deg, $color-accent 0%, $color-accent2 100%);
+  color: $color-dark;
   border: none;
   border-radius: 50px;
-  padding: 1rem 3rem;
-  font-size: 1.2rem;
-  font-weight: 600;
+  padding: 1.5rem 4rem;
+  font-size: 1.3rem;
+  font-weight: 800;
   cursor: pointer;
   transition: $transition-all;
-  box-shadow: $shadow-deep;
+  box-shadow: $shadow-deep,
+              inset 0 -4px 0 rgba(0,0,0,0.2),
+              inset 0 0 20px rgba(255,255,255,0.2);
   position: relative;
   overflow: hidden;
+  font-family: 'Press Start 2P', cursive;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  z-index: 5;
   
   &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4),
+                inset 0 -4px 0 rgba(0,0,0,0.2);
+    
+    .btn-icon {
+      transform: translateX(5px) rotate(15deg);
+    }
     
     &::after {
       transform: translateX(100%);
@@ -81,35 +145,246 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
     transform: translateX(-100%);
     transition: $transition-all;
   }
+  
+  .btn-icon {
+    transition: $transition-all;
+    font-size: 1.5rem;
+    display: inline-block;
+  }
+}
+
+// Tierra mejorada
+.earth-container {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  z-index: 1;
+  animation: earth-float 15s ease-in-out infinite;
 }
 
 .earth-animation {
-  position: absolute;
-  width: 300px;
-  height: 300px;
+  width: 100%;
+  height: 100%;
   background: url('https://cdn.pixabay.com/photo/2016/04/25/18/07/globe-1352510_960_720.png') center/cover;
   border-radius: 50%;
   box-shadow: 
-    0 0 60px rgba($color-primary, 0.4),
-    inset 0 0 40px rgba(0, 0, 0, 0.5);
+    0 0 80px rgba($color-primary, 0.6),
+    inset 0 0 60px rgba(0, 0, 0, 0.8),
+    0 0 0 5px rgba(255,255,255,0.1);
   animation: rotate 30s linear infinite;
-  opacity: 0.8;
-  z-index: 1;
+  position: relative;
+  z-index: 2;
+}
+
+.ring {
+  position: absolute;
+  width: 120%;
+  height: 20px;
+  background: transparent;
+  border: 5px solid rgba($color-secondary, 0.4);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotateX(75deg);
+  animation: ring-rotate 20s linear infinite;
   
-  &::before {
-    content: '';
+  &.outer {
+    width: 150%;
+    height: 30px;
+    border-color: rgba($color-accent, 0.3);
+    animation-direction: reverse;
+    animation-duration: 25s;
+  }
+}
+
+// Robots mejorados
+.robot-squad {
+  position: absolute;
+  bottom: 5%;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  z-index: 5;
+}
+
+.robot {
+  position: relative;
+  width: 120px;
+  height: 180px;
+  animation: robot-bounce 4s ease-in-out infinite;
+  
+  &.commander {
+    animation-delay: 0.3s;
+  }
+  
+  &.scientist {
+    animation-delay: 0.7s;
+  }
+  
+  .badge {
     position: absolute;
-    top: -10px;
-    left: -10px;
-    right: -10px;
-    bottom: -10px;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: $color-dark;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 15px;
+    font-size: 0.7rem;
+    font-family: 'Press Start 2P', cursive;
+    white-space: nowrap;
+    box-shadow: 0 3px 0 rgba(0,0,0,0.2);
+  }
+  
+  .antenna {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3px;
+    height: 15px;
+    background: $color-accent;
+    border-radius: 3px;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 10px;
+      height: 10px;
+      background: $color-accent2;
+      border-radius: 50%;
+      box-shadow: 0 0 10px $color-accent2;
+    }
+  }
+  
+  .head {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 60px;
+    background: $color-secondary;
+    border-radius: 20px 20px 0 0;
+    box-shadow: 
+      inset 0 -8px 0 rgba(0,0,0,0.2),
+      0 0 0 3px rgba(0,0,0,0.1);
+  }
+  
+  .body {
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 90px;
+    background: $color-secondary;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 
+      inset 0 -8px 0 rgba(0,0,0,0.2),
+      0 0 0 3px rgba(0,0,0,0.1);
+  }
+  
+  .arm {
+    position: absolute;
+    width: 20px;
+    height: 70px;
+    background: $color-primary;
+    top: 70px;
+    box-shadow: inset 0 -5px 0 rgba(0,0,0,0.2);
+    
+    &.left {
+      left: 25%;
+      transform-origin: top center;
+      animation: robot-arm-left 2.5s ease-in-out infinite;
+    }
+    
+    &.right {
+      right: 25%;
+      transform-origin: top center;
+      animation: robot-arm-right 2.5s ease-in-out infinite 0.3s;
+    }
+  }
+  
+  .eye {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 25px;
+    height: 25px;
+    background: $color-accent;
     border-radius: 50%;
-    background: radial-gradient(circle, transparent 60%, rgba($color-primary, 0.3) 100%);
-    z-index: -1;
+    box-shadow: 
+      0 0 15px $color-accent,
+      inset 3px 3px 5px rgba(0,0,0,0.3);
+    animation: robot-eye 4s ease-in-out infinite;
+  }
+  
+  &.scientist {
+    .head, .body {
+      background: $color-primary;
+    }
+    
+    .arm {
+      background: $color-secondary;
+    }
+    
+    .eye {
+      background: $color-accent2;
+      box-shadow: 0 0 15px $color-accent2;
+    }
+    
+    .antenna::after {
+      background: $color-accent;
+      box-shadow: 0 0 10px $color-accent;
+    }
+  }
+}
+
+// Elementos flotantes
+.floating-elements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 3;
+  
+  .cloud {
+    position: absolute;
+    width: 150px;
+    height: 60px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50px;
+    filter: blur(10px);
+    animation: cloud-float 20s linear infinite;
+    
+    &.small {
+      width: 100px;
+      height: 40px;
+      animation-duration: 25s;
+      animation-delay: 5s;
+      top: 30%;
+      left: 70%;
+    }
+  }
+  
+  .recycle-symbol {
+    position: absolute;
+    font-size: 3rem;
+    opacity: 0.3;
+    animation: symbol-float 15s ease-in-out infinite alternate;
+    top: 20%;
+    right: 10%;
   }
 }
 
@@ -119,34 +394,132 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: $color-primary;
+  background: linear-gradient(135deg, $color-primary 0%, $color-secondary 100%);
   z-index: 1000;
   transform: translateY(100%);
   pointer-events: none;
 }
 
-@keyframes rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+#confetti-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  pointer-events: none;
 }
 
-@keyframes float {
+// Animaciones mejoradas
+@keyframes star-anim {
+  from { transform: translateY(0); }
+  to { transform: translateY(-1000px); }
+}
+
+@keyframes title-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(2deg); }
+}
+
+@keyframes span-underline {
+  0%, 100% { width: 100%; left: 0; }
+  50% { width: 80%; left: 10%; }
+}
+
+@keyframes subtitle-shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+@keyframes earth-float {
+  0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
+  50% { transform: translate(-50%, -55%) rotate(5deg); }
+}
+
+@keyframes ring-rotate {
+  from { transform: translate(-50%, -50%) rotateX(75deg) rotateZ(0deg); }
+  to { transform: translate(-50%, -50%) rotateX(75deg) rotateZ(360deg); }
+}
+
+@keyframes robot-bounce {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
+  50% { transform: translateY(-30px); }
+}
+
+@keyframes robot-arm-left {
+  0%, 100% { transform: rotate(-30deg); }
+  50% { transform: rotate(50deg); }
+}
+
+@keyframes robot-arm-right {
+  0%, 100% { transform: rotate(30deg); }
+  50% { transform: rotate(-50deg); }
+}
+
+@keyframes robot-eye {
+  0%, 90%, 100% { transform: translateX(-50%) scale(1); }
+  95% { transform: translateX(-50%) scale(1.1); }
+}
+
+@keyframes cloud-float {
+  0% { transform: translateX(-150px); opacity: 0; }
+  10% { opacity: 0.3; }
+  90% { opacity: 0.3; }
+  100% { transform: translateX(calc(100vw + 150px)); opacity: 0; }
+}
+
+@keyframes symbol-float {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(100px) rotate(360deg); }
+}
+
+.pulse-animation {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
 }
 
 // Responsive
 @media (max-width: 768px) {
   .title {
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
   
   .subtitle {
     font-size: 1.2rem;
   }
   
-  .earth-animation {
-    width: 200px;
-    height: 200px;
+  .earth-container {
+    width: 250px;
+    height: 250px;
+  }
+  
+  .robot {
+    width: 80px;
+    height: 140px;
+    
+    .head {
+      width: 50px;
+      height: 45px;
+    }
+    
+    .body {
+      width: 60px;
+      height: 70px;
+    }
+    
+    .arm {
+      height: 60px;
+    }
+  }
+  
+  .cta-button {
+    padding: 1rem 2.5rem;
+    font-size: 1rem;
   }
 }

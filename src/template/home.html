@@ -3,24 +3,79 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EcoCalculadora - Inicio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&family=Roboto&display=swap" rel="stylesheet">
+  <title>EcoCalculadora - Aventura Ecológica</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&family=Roboto&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <link rel="stylesheet" href="/src/style/css/home.css" />
 </head>
 <body>
   <div class="hero">
-    <div class="hero-content">
+    <!-- Fondo de estrellas dinámico -->
+    <div class="star-field">
+      <div class="layer"></div>
+      <div class="layer"></div>
+      <div class="layer"></div>
+    </div>
+    
+    <div class="hero-content animate__animated animate__fadeIn">
       <h1 class="title">Eco<span>Calculadora</span></h1>
-      <p class="subtitle">Descubre tu impacto ambiental y aprende a reducirlo</p>
+      <p class="subtitle">Conviértete en héroe del planeta</p>
       <div class="cta-container">
-        <button id="startBtn" class="cta-button">Comenzar</button>
+        <button id="startBtn" class="cta-button pulse-animation">
+          <span class="btn-text">Comenzar</span>
+          <span class="btn-icon">🚀</span>
+        </button>
       </div>
     </div>
-    <div class="earth-animation"></div>
+    
+    <!-- Tierra mejorada con anillos -->
+    <div class="earth-container">
+      <div class="earth-animation"></div>
+      <div class="ring"></div>
+      <div class="ring outer"></div>
+    </div>
+    
+    <!-- Equipo de robots mejorado -->
+    <div class="robot-squad">
+      <div class="robot commander">
+        <div class="antenna"></div>
+        <div class="head"></div>
+        <div class="body"></div>
+        <div class="arm left"></div>
+        <div class="arm right"></div>
+        <div class="eye"></div>
+        <div class="badge">ECO-1</div>
+      </div>
+      
+      <div class="robot scientist">
+        <div class="antenna"></div>
+        <div class="head"></div>
+        <div class="body"></div>
+        <div class="arm left"></div>
+        <div class="arm right"></div>
+        <div class="eye"></div>
+        <div class="badge">ECO-2</div>
+      </div>
+    </div>
+    
+    <!-- Elementos flotantes -->
+    <div class="floating-elements">
+      <div class="cloud"></div>
+      <div class="cloud small"></div>
+      <div class="recycle-symbol">♻️</div>
+    </div>
   </div>
 
   <div class="transition-screen"></div>
+  
+  <!-- Efectos de confeti -->
+  <canvas id="confetti-canvas"></canvas>
+  
+  <!-- Sonidos -->
+  <audio id="hoverSound" src="https://assets.mixkit.co/sfx/preview/mixkit-arcade-game-jump-coin-216.mp3"></audio>
+  <audio id="clickSound" src="https://assets.mixkit.co/sfx/preview/mixkit-positive-interface-beep-221.mp3"></audio>
 
   <script src="/src/components/home.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/confetti-js@0.0.18/dist/index.min.js"></script>
 </body>
 </html>
