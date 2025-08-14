@@ -1,0 +1,349 @@
+/* Variables */
+:root {
+  --ocean-blue: #2980b9;
+  --ocean-dark: #1a5276;
+  --island-width: 300px;
+  --island-height: 400px;
+}
+
+/* Estilos base */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  overflow: hidden;
+  background: linear-gradient(to bottom, #87CEEB, #1E90FF);
+  height: 100vh;
+}
+
+.world-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  perspective: 1000px;
+}
+
+/* Contenedor de islas */
+.islands-viewport {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 60%;
+  overflow: hidden;
+}
+
+.islands-scroller {
+  display: flex;
+  position: absolute;
+  height: 100%;
+  transition: transform 0.8s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+/* Estilo de cada isla */
+.island {
+  position: relative;
+  width: var(--island-width);
+  height: var(--island-height);
+  margin: 0 30px;
+  flex-shrink: 0;
+  transform-style: preserve-3d;
+}
+
+.island-base {
+  position: absolute;
+  width: 100%;
+  height: 60%;
+  bottom: 0;
+  border-radius: 20px 20px 0 0;
+  background: #2ECC71;
+  box-shadow: inset 0 -10px 0 rgba(0,0,0,0.2);
+  transform-origin: bottom;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 20px;
+}
+
+.island-details {
+  background: rgba(255,255,255,0.9);
+  width: 90%;
+  padding: 15px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transform: translateY(20px);
+  transition: transform 0.5s ease;
+}
+
+.island h2 {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1rem;
+  margin-bottom: 10px;
+  color: #2c3e50;
+}
+
+.categories {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.category {
+  background: rgba(0,0,0,0.05);
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.explore-btn {
+  background: #2c3e50;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+}
+
+.explore-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+
+/* Decoración de islas */
+.island-decoration {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  z-index: -1;
+}
+
+.mountain {
+  position: absolute;
+  bottom: 60%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 150px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.1), transparent);
+  border-radius: 50% 50% 0 0;
+  clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
+}
+
+.server-tower, .code-tree, 
+.document-tower, .book-tower {
+  position: absolute;
+  bottom: 60%;
+  width: 40px;
+  height: 60px;
+  background: rgba(255,255,255,0.3);
+  border-radius: 5px;
+}
+
+.server-tower { left: 30%; }
+.code-tree { left: 25%; clip-path: polygon(50% 0%, 0% 100%, 100% 100%); }
+.document-tower { left: 35%; }
+.book-tower { left: 30%; height: 80px; }
+
+.cloud-data, .leaf-cloud, 
+.scale-cloud, .coin-cloud {
+  position: absolute;
+  font-size: 1.5rem;
+  opacity: 0.8;
+}
+
+.cloud-data { top: 30%; right: 20%; }
+.leaf-cloud { top: 25%; right: 25%; }
+.scale-cloud { top: 30%; right: 20%; }
+.coin-cloud { top: 25%; right: 25%; }
+
+/* Robots estilo Interland */
+.robot {
+  position: absolute;
+  bottom: 60%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+.robot-head {
+  width: 50px;
+  height: 40px;
+  background: var(--robot-color);
+  border-radius: 20px 20px 0 0;
+  position: relative;
+  box-shadow: inset 0 -5px 0 rgba(0,0,0,0.2);
+}
+
+.robot-eye {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 15px;
+  height: 15px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px rgba(0,0,0,0.2);
+}
+
+.robot-body {
+  width: 60px;
+  height: 70px;
+  background: var(--robot-color);
+  border-radius: 0 0 15px 15px;
+  box-shadow: inset 0 -5px 0 rgba(0,0,0,0.2);
+}
+
+.robot-arm {
+  position: absolute;
+  width: 15px;
+  height: 50px;
+  background: var(--robot-color);
+  top: 40px;
+  box-shadow: inset 0 -3px 0 rgba(0,0,0,0.2);
+}
+
+.robot-arm.left {
+  left: -10px;
+  transform-origin: top center;
+  animation: arm-swing-left 2s infinite ease-in-out;
+}
+
+.robot-arm.right {
+  right: -10px;
+  transform-origin: top center;
+  animation: arm-swing-right 2s infinite ease-in-out;
+}
+
+/* Océano */
+.ocean {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 30%;
+  background: linear-gradient(to bottom, var(--ocean-blue), var(--ocean-dark));
+  z-index: -2;
+  animation: ocean-wave 5s infinite ease-in-out;
+}
+
+/* Nubes */
+.clouds {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 30%;
+}
+
+.cloud {
+  position: absolute;
+  background: white;
+  opacity: 0.8;
+  border-radius: 50%;
+  animation: cloud-move 60s linear infinite;
+}
+
+.cloud:nth-child(1) {
+  width: 100px; height: 60px;
+  top: 20%; left: 10%;
+  animation-duration: 80s;
+}
+.cloud:nth-child(2) {
+  width: 150px; height: 90px;
+  top: 15%; left: 40%;
+  animation-duration: 100s;
+}
+.cloud:nth-child(3) {
+  width: 80px; height: 50px;
+  top: 25%; left: 70%;
+  animation-duration: 70s;
+}
+
+/* Controles de navegación */
+.nav-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background: rgba(255,255,255,0.8);
+  border: none;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+.nav-control:hover {
+  background: white;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.nav-control.prev {
+  left: 20px;
+}
+
+.nav-control.next {
+  right: 20px;
+}
+
+/* Animaciones */
+@keyframes ocean-wave {
+  0%, 100% { height: 30%; }
+  50% { height: 32%; }
+}
+
+@keyframes cloud-move {
+  from { transform: translateX(-150px); }
+  to { transform: translateX(calc(100vw + 150px)); }
+}
+
+@keyframes arm-swing-left {
+  0%, 100% { transform: rotate(-20deg); }
+  50% { transform: rotate(30deg); }
+}
+
+@keyframes arm-swing-right {
+  0%, 100% { transform: rotate(20deg); }
+  50% { transform: rotate(-30deg); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .islands-viewport {
+    width: 95%;
+  }
+  
+  .island {
+    width: 250px;
+    height: 350px;
+    margin: 0 15px;
+  }
+  
+  .nav-control {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+  
+  .island h2 {
+    font-size: 0.8rem;
+  }
+  
+  .category {
+    font-size: 0.6rem;
+  }
+}

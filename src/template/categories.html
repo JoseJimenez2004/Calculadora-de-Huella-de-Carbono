@@ -1,55 +1,150 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EcoCalculadora - Categorías</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&family=Roboto&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/src/style/css/categories.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoCalculadora - Islas del Conocimiento</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/style/categories/main.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
 </head>
 <body>
-  <header class="categories-header">
-    <h1>Selecciona una categoría</h1>
-    <p>Calcula tu huella de carbono en diferentes áreas tecnológicas</p>
-  </header>
-  
-  <main class="categories-grid">
-    <div class="category-card" data-category="servidores-fisicos">
-      <div class="card-icon">💾</div>
-      <h3>Servidores Físicos</h3>
-      <p>Infraestructura de servidores locales</p>
+  <div class="world-container">
+    <!-- Contenedor principal de islas -->
+    <div class="islands-viewport">
+      <div class="islands-scroller" id="islandsScroller">
+        <!-- Isla 1: Infraestructura -->
+        <div class="island" data-island="1">
+          <div class="island-base" style="background-color: #2ECC71;">
+            <div class="island-details">
+              <h2>Infraestructura y Tecnología</h2>
+              <div class="categories">
+                <div class="category">Hardware y Dispositivos</div>
+                <div class="category">Centros de Datos</div>
+                <div class="category">Redes y Comunicaciones</div>
+                <div class="category">Tecnologías Emergentes</div>
+              </div>
+              <button class="explore-btn">Explorar</button>
+            </div>
+          </div>
+          <div class="island-decoration">
+            <div class="mountain"></div>
+            <div class="server-tower"></div>
+            <div class="cloud-data"></div>
+          </div>
+          <div class="robot" style="--robot-color: #2ECC71;">
+            <div class="robot-head">
+              <div class="robot-eye"></div>
+            </div>
+            <div class="robot-body"></div>
+            <div class="robot-arm left"></div>
+            <div class="robot-arm right"></div>
+          </div>
+        </div>
+
+        <!-- Isla 2: Desarrollo -->
+        <div class="island" data-island="2">
+          <div class="island-base" style="background-color: #3498DB;">
+            <div class="island-details">
+              <h2>Desarrollo Sostenible</h2>
+              <div class="categories">
+                <div class="category">Software Verde</div>
+                <div class="category">Servicios TI</div>
+                <div class="category">Algoritmos</div>
+                <div class="category">Cadena de Suministro</div>
+              </div>
+              <button class="explore-btn">Explorar</button>
+            </div>
+          </div>
+          <div class="island-decoration">
+            <div class="mountain"></div>
+            <div class="code-tree"></div>
+            <div class="leaf-cloud"></div>
+          </div>
+          <div class="robot" style="--robot-color: #3498DB;">
+            <div class="robot-head">
+              <div class="robot-eye"></div>
+            </div>
+            <div class="robot-body"></div>
+            <div class="robot-arm left"></div>
+            <div class="robot-arm right"></div>
+          </div>
+        </div>
+
+        <!-- Isla 3: Gobernanza -->
+        <div class="island" data-island="3">
+          <div class="island-base" style="background-color: #F1C40F;">
+            <div class="island-details">
+              <h2>Gobernanza y Cumplimiento</h2>
+              <div class="categories">
+                <div class="category">Estrategia Empresarial</div>
+                <div class="category">Regulaciones</div>
+                <div class="category">Cumplimiento</div>
+                <div class="category">Auditoría</div>
+              </div>
+              <button class="explore-btn">Explorar</button>
+            </div>
+          </div>
+          <div class="island-decoration">
+            <div class="mountain"></div>
+            <div class="document-tower"></div>
+            <div class="scale-cloud"></div>
+          </div>
+          <div class="robot" style="--robot-color: #F1C40F;">
+            <div class="robot-head">
+              <div class="robot-eye"></div>
+            </div>
+            <div class="robot-body"></div>
+            <div class="robot-arm left"></div>
+            <div class="robot-arm right"></div>
+          </div>
+        </div>
+
+        <!-- Isla 4: Cultura -->
+        <div class="island" data-island="4">
+          <div class="island-base" style="background-color: #E74C3C;">
+            <div class="island-details">
+              <h2>Cultura y Economía Verde</h2>
+              <div class="categories">
+                <div class="category">Educación</div>
+                <div class="category">Finanzas</div>
+                <div class="category">Uso Responsable</div>
+                <div class="category">Capacitación</div>
+              </div>
+              <button class="explore-btn">Explorar</button>
+            </div>
+          </div>
+          <div class="island-decoration">
+            <div class="mountain"></div>
+            <div class="book-tower"></div>
+            <div class="coin-cloud"></div>
+          </div>
+          <div class="robot" style="--robot-color: #E74C3C;">
+            <div class="robot-head">
+              <div class="robot-eye"></div>
+            </div>
+            <div class="robot-body"></div>
+            <div class="robot-arm left"></div>
+            <div class="robot-arm right"></div>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <!-- Controles de navegación -->
+    <button class="nav-control prev" id="prevBtn">‹</button>
+    <button class="nav-control next" id="nextBtn">›</button>
+
+    <!-- Océano -->
+    <div class="ocean"></div>
     
-    <div class="category-card" data-category="servidores-nube">
-      <div class="card-icon">☁️</div>
-      <h3>Servidores en la Nube</h3>
-      <p>Servicios cloud y hosting</p>
+    <!-- Efectos de nubes -->
+    <div class="clouds">
+      <div class="cloud"></div>
+      <div class="cloud"></div>
+      <div class="cloud"></div>
     </div>
-    
-    <div class="category-card" data-category="laptops">
-      <div class="card-icon">💻</div>
-      <h3>Laptops</h3>
-      <p>Computadoras portátiles</p>
-    </div>
-    
-    <div class="category-card" data-category="desktops">
-      <div class="card-icon">🖥️</div>
-      <h3>Computadoras de Escritorio</h3>
-      <p>Equipos de trabajo fijos</p>
-    </div>
-    
-    <div class="category-card" data-category="celulares">
-      <div class="card-icon">📱</div>
-      <h3>Celulares</h3>
-      <p>Dispositivos móviles</p>
-    </div>
-    
-    <div class="category-card" data-category="instalaciones">
-      <div class="card-icon">🏢</div>
-      <h3>Instalaciones Físicas</h3>
-      <p>Centros de datos y oficinas</p>
-    </div>
- </main>
+  </div>
 
   <script src="/src/components/categories.js"></script>
 </body>
