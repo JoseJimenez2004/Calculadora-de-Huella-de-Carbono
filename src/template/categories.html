@@ -3,149 +3,147 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EcoCalculadora - Islas del Conocimiento</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <title>EcoCalculadora - Calculadora de Huella de Carbono</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="stylesheet" href="/src/style/categories/main.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
 </head>
 <body>
-  <div class="world-container">
-    <!-- Contenedor principal de islas -->
-    <div class="islands-viewport">
-      <div class="islands-scroller" id="islandsScroller">
-        <!-- Isla 1: Infraestructura -->
-        <div class="island" data-island="1">
-          <div class="island-base" style="background-color: #2ECC71;">
-            <div class="island-details">
-              <h2>Infraestructura y Tecnología</h2>
-              <div class="categories">
-                <div class="category">Hardware y Dispositivos</div>
-                <div class="category">Centros de Datos</div>
-                <div class="category">Redes y Comunicaciones</div>
-                <div class="category">Tecnologías Emergentes</div>
-              </div>
-              <button class="explore-btn">Explorar</button>
+  <div class="eco-app">
+    <header class="eco-header">
+      <div class="header-content">
+        <h1><span class="eco-leaf"><i class="fas fa-leaf"></i></span> EcoCalculadora</h1>
+        <p class="tagline">Calculadora Para la huella de carbono</p>
+        <h2><span class="eco-leaf"></span> Categorias</h2>
+      </div>
+    </header>
+
+    <main class="eco-main">
+      <div class="categories-container">
+        <!-- Categoría 1 -->
+        <div class="eco-category energy-category">
+          <div class="category-header">
+            <div class="icon-circle">
+              <i class="fas fa-bolt"></i>
+            </div>
+            <h2>Energía</h2>
+          </div>
+          <div class="subcategories">
+            <div class="subcategory">
+              <h3>Electricidad</h3>
+              <p>Consumo en kWh</p>
+              <div class="progress-leaf"></div>
+            </div>
+            <div class="subcategory">
+              <h3>Combustibles</h3>
+              <p>Gasolina, diésel, gas</p>
+              <div class="progress-leaf"></div>
+            </div>
+            <div class="subcategory">
+              <h3>Renovables</h3>
+              <p>Energía solar/eólica</p>
+              <div class="progress-leaf"></div>
             </div>
           </div>
-          <div class="island-decoration">
-            <div class="mountain"></div>
-            <div class="server-tower"></div>
-            <div class="cloud-data"></div>
-          </div>
-          <div class="robot" style="--robot-color: #2ECC71;">
-            <div class="robot-head">
-              <div class="robot-eye"></div>
-            </div>
-            <div class="robot-body"></div>
-            <div class="robot-arm left"></div>
-            <div class="robot-arm right"></div>
-          </div>
+          <button class="eco-btn calculate-btn">Calcular <i class="fas fa-calculator"></i></button>
         </div>
 
-        <!-- Isla 2: Desarrollo -->
-        <div class="island" data-island="2">
-          <div class="island-base" style="background-color: #3498DB;">
-            <div class="island-details">
-              <h2>Desarrollo Sostenible</h2>
-              <div class="categories">
-                <div class="category">Software Verde</div>
-                <div class="category">Servicios TI</div>
-                <div class="category">Algoritmos</div>
-                <div class="category">Cadena de Suministro</div>
-              </div>
-              <button class="explore-btn">Explorar</button>
+        <!-- Categoría 2 -->
+        <div class="eco-category transport-category">
+          <div class="category-header">
+            <div class="icon-circle">
+              <i class="fas fa-car"></i>
+            </div>
+            <h2>Transporte</h2>
+          </div>
+          <div class="subcategories">
+            <div class="subcategory">
+              <h3>Vehículos</h3>
+              <p>Autos, motos, camiones</p>
+              <div class="progress-leaf"></div>
+            </div>
+            <div class="subcategory">
+              <h3>Viajes</h3>
+              <p>Aéreos, trenes, buses</p>
+              <div class="progress-leaf"></div>
+            </div>
+            <div class="subcategory">
+              <h3>Logística</h3>
+              <p>Envíos y distribución</p>
+              <div class="progress-leaf"></div>
             </div>
           </div>
-          <div class="island-decoration">
-            <div class="mountain"></div>
-            <div class="code-tree"></div>
-            <div class="leaf-cloud"></div>
-          </div>
-          <div class="robot" style="--robot-color: #3498DB;">
-            <div class="robot-head">
-              <div class="robot-eye"></div>
-            </div>
-            <div class="robot-body"></div>
-            <div class="robot-arm left"></div>
-            <div class="robot-arm right"></div>
-          </div>
+          <button class="eco-btn calculate-btn">Calcular <i class="fas fa-calculator"></i></button>
         </div>
 
-        <!-- Isla 3: Gobernanza -->
-        <div class="island" data-island="3">
-          <div class="island-base" style="background-color: #F1C40F;">
-            <div class="island-details">
-              <h2>Gobernanza y Cumplimiento</h2>
-              <div class="categories">
-                <div class="category">Estrategia Empresarial</div>
-                <div class="category">Regulaciones</div>
-                <div class="category">Cumplimiento</div>
-                <div class="category">Auditoría</div>
-              </div>
-              <button class="explore-btn">Explorar</button>
+        <!-- Categoría 3 -->
+        <div class="eco-category materials-category">
+          <div class="category-header">
+            <div class="icon-circle">
+              <i class="fas fa-box-open"></i>
+            </div>
+            <h2>Materiales</h2>
+          </div>
+          <div class="subcategories">
+            <div class="subcategory">
+              <h3>Materias primas</h3>
+              <p>Extracción y procesamiento</p>
+              <div class="progress-leaf"></div>
+            </div>
+            <div class="subcategory">
+              <h3>Productos</h3>
+              <p>Bienes manufacturados</p>
+              <div class="progress-leaf"></div>
+            </div>
+            <div class="subcategory">
+              <h3>Residuos</h3>
+              <p>Gestión de desechos</p>
+              <div class="progress-leaf"></div>
             </div>
           </div>
-          <div class="island-decoration">
-            <div class="mountain"></div>
-            <div class="document-tower"></div>
-            <div class="scale-cloud"></div>
-          </div>
-          <div class="robot" style="--robot-color: #F1C40F;">
-            <div class="robot-head">
-              <div class="robot-eye"></div>
-            </div>
-            <div class="robot-body"></div>
-            <div class="robot-arm left"></div>
-            <div class="robot-arm right"></div>
-          </div>
+          <button class="eco-btn calculate-btn">Calcular <i class="fas fa-calculator"></i></button>
         </div>
 
-        <!-- Isla 4: Cultura -->
-        <div class="island" data-island="4">
-          <div class="island-base" style="background-color: #E74C3C;">
-            <div class="island-details">
-              <h2>Cultura y Economía Verde</h2>
-              <div class="categories">
-                <div class="category">Educación</div>
-                <div class="category">Finanzas</div>
-                <div class="category">Uso Responsable</div>
-                <div class="category">Capacitación</div>
-              </div>
-              <button class="explore-btn">Explorar</button>
+        <!-- Categoría 4 -->
+        <div class="eco-category services-category">
+          <div class="category-header">
+            <div class="icon-circle">
+              <i class="fas fa-laptop"></i>
+            </div>
+            <h2>Servicios</h2>
+          </div>
+          <div class="subcategories">
+            <div class="subcategory">
+              <h3>Digital</h3>
+              <p>Servicios en la nube</p>
+              <div class="progress-leaf"></div>
+            </div>
+            <div class="subcategory">
+              <h3>Oficina</h3>
+              <p>Consumos corporativos</p>
+              <div class="progress-leaf"></div>
+            </div>
+            <div class="subcategory">
+              <h3>Infraestructura</h3>
+              <p>Edificios e instalaciones</p>
+              <div class="progress-leaf"></div>
             </div>
           </div>
-          <div class="island-decoration">
-            <div class="mountain"></div>
-            <div class="book-tower"></div>
-            <div class="coin-cloud"></div>
-          </div>
-          <div class="robot" style="--robot-color: #E74C3C;">
-            <div class="robot-head">
-              <div class="robot-eye"></div>
-            </div>
-            <div class="robot-body"></div>
-            <div class="robot-arm left"></div>
-            <div class="robot-arm right"></div>
-          </div>
+          <button class="eco-btn calculate-btn">Calcular <i class="fas fa-calculator"></i></button>
         </div>
       </div>
-    </div>
+    </main>
 
-    <!-- Controles de navegación -->
-    <button class="nav-control prev" id="prevBtn">‹</button>
-    <button class="nav-control next" id="nextBtn">›</button>
-
-    <!-- Océano -->
-    <div class="ocean"></div>
-    
-    <!-- Efectos de nubes -->
-    <div class="clouds">
-      <div class="cloud"></div>
-      <div class="cloud"></div>
-      <div class="cloud"></div>
-    </div>
+    <footer class="eco-footer">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <i class="fas fa-leaf"></i> EcoCalculadora
+        </div>
+      </div>
+    </footer>
   </div>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
   <script src="/src/components/categories.js"></script>
 </body>
 </html>
