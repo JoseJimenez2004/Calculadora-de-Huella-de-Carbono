@@ -1,0 +1,72 @@
+@import url('variables.css');
+
+/* Tablets y dispositivos medianos */
+@media (max-width: 992px) {
+  .categories-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .eco-header h1 {
+    font-size: 2rem;
+  }
+}
+
+/* Móviles y dispositivos pequeños */
+@media (max-width: 768px) {
+  .categories-container {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+    padding: 0 var(--spacing-sm);
+  }
+  
+  .eco-header {
+    padding: var(--spacing-md) 0;
+  }
+  
+  .eco-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .modal-content {
+    width: 95%;
+    margin: var(--spacing-sm);
+  }
+  
+  .modal-body {
+    padding: var(--spacing-md);
+  }
+  
+  .modal-footer {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+  
+  .modal-footer .eco-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Dispositivos muy pequeños */
+@media (max-width: 480px) {
+  .category-header {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--spacing-xs);
+  }
+  
+  .icon-circle {
+    margin-right: 0;
+    margin-bottom: var(--spacing-xs);
+  }
+  
+  .modal-header {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    text-align: center;
+  }
+  
+  .close-modal {
+    align-self: flex-end;
+  }
+}

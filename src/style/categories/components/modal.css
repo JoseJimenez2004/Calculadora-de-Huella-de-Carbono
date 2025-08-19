@@ -1,0 +1,129 @@
+@import url('variables.css');
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-normal), visibility var(--transition-normal);
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content {
+  background-color: var(--white);
+  border-radius: var(--border-radius-md);
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-modal);
+  transform: translateY(-50px);
+  transition: transform var(--transition-normal);
+}
+
+.modal-overlay.active .modal-content {
+  transform: translateY(0);
+}
+
+.modal-header {
+  padding: var(--spacing-md);
+  border-bottom: 1px solid var(--medium-gray);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h2 {
+  font-family: var(--font-secondary);
+  color: var(--dark-green);
+  font-size: 1.8rem;
+}
+
+.close-modal {
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: var(--dark-gray);
+  transition: color var(--transition-normal);
+}
+
+.close-modal:hover {
+  color: var(--primary-green);
+}
+
+.modal-body {
+  padding: var(--spacing-lg);
+}
+
+.category-icon-large {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--border-radius-circle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--spacing-md);
+  font-size: 2rem;
+  color: var(--white);
+}
+
+.modal-body p {
+  margin-bottom: var(--spacing-md);
+  line-height: 1.6;
+  text-align: center;
+}
+
+.modal-subcategories {
+  background-color: var(--lighter-green);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-sm);
+  margin-top: var(--spacing-md);
+}
+
+.modal-subcategories h3 {
+  margin-bottom: var(--spacing-sm);
+  color: var(--dark-green);
+  text-align: center;
+}
+
+.modal-subcategories ul {
+  list-style-type: none;
+}
+
+.modal-subcategories li {
+  padding: var(--spacing-xs) 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+}
+
+.modal-subcategories li:last-child {
+  border-bottom: none;
+}
+
+.modal-subcategories li::before {
+  content: '•';
+  color: var(--primary-green);
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-right: 0.5em;
+}
+
+.modal-footer {
+  padding: var(--spacing-md);
+  border-top: 1px solid var(--medium-gray);
+  display: flex;
+  justify-content: flex-end;
+}

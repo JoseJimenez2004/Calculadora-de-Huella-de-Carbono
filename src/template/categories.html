@@ -45,7 +45,7 @@
               <div class="progress-leaf"></div>
             </div>
           </div>
-          <button class="eco-btn calculate-btn">Calcular <i class="fas fa-calculator"></i></button>
+          <button class="eco-btn calculate-btn" data-category="energy">Calcular <i class="fas fa-calculator"></i></button>
         </div>
 
         <!-- Categoría 2 -->
@@ -73,7 +73,7 @@
               <div class="progress-leaf"></div>
             </div>
           </div>
-          <button class="eco-btn calculate-btn">Calcular <i class="fas fa-calculator"></i></button>
+          <button class="eco-btn calculate-btn" data-category="transport">Calcular <i class="fas fa-calculator"></i></button>
         </div>
 
         <!-- Categoría 3 -->
@@ -101,7 +101,7 @@
               <div class="progress-leaf"></div>
             </div>
           </div>
-          <button class="eco-btn calculate-btn">Calcular <i class="fas fa-calculator"></i></button>
+          <button class="eco-btn calculate-btn" data-category="materials">Calcular <i class="fas fa-calculator"></i></button>
         </div>
 
         <!-- Categoría 4 -->
@@ -129,7 +129,7 @@
               <div class="progress-leaf"></div>
             </div>
           </div>
-          <button class="eco-btn calculate-btn">Calcular <i class="fas fa-calculator"></i></button>
+          <button class="eco-btn calculate-btn" data-category="services">Calcular <i class="fas fa-calculator"></i></button>
         </div>
       </div>
     </main>
@@ -141,6 +141,31 @@
         </div>
       </div>
     </footer>
+  </div>
+
+  <!-- Modal de descripción general -->
+  <div class="modal-overlay" id="descriptionModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modalTitle">Descripción General</h2>
+        <span class="close-modal">&times;</span>
+      </div>
+      <div class="modal-body">
+        <div class="category-icon-large">
+          <i class="fas" id="modalIcon"></i>
+        </div>
+        <p id="modalDescription"></p>
+        <div class="modal-subcategories">
+          <h3>Subcategorías incluidas:</h3>
+          <ul id="modalSubcategories"></ul>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="eco-btn continue-btn">
+          Continuar <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+    </div>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>

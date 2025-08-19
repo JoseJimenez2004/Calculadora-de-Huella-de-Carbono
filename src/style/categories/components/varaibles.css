@@ -1,0 +1,61 @@
+:root {
+  /* Colores principales */
+  --primary-green: #2e8b57;
+  --dark-green: #1e5631;
+  --light-green: #a4de6c;
+  --lighter-green: #d9f2d9;
+  
+  /* Colores de categorías */
+  --energy-color: #ff9a3c;
+  --transport-color: #3c78d8;
+  --materials-color: #6d4c41;
+  --services-color: #9c64a6;
+  
+  /* Colores neutros */
+  --white: #ffffff;
+  --light-gray: #f5f7fa;
+  --medium-gray: #e1e5eb;
+  --dark-gray: #6c757d;
+  --text-color: #343a40;
+  
+  /* Tipografía */
+  --font-primary: 'Montserrat', sans-serif;
+  --font-secondary: 'Playfair Display', serif;
+  
+  /* Espaciado */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  
+  /* Bordes */
+  --border-radius-sm: 8px;
+  --border-radius-md: 12px;
+  --border-radius-lg: 30px;
+  --border-radius-circle: 50%;
+  
+  /* Sombras */
+  --shadow-sm: 0 4px 8px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.12);
+  --shadow-modal: 0 10px 30px rgba(0, 0, 0, 0.2);
+  
+  /* Transiciones */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-primary);
+  color: var(--text-color);
+  background-color: var(--light-gray);
+  line-height: 1.6;
+}

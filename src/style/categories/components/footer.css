@@ -1,0 +1,21 @@
+@import url('variables.css');
+
+.eco-footer {
+  background: var(--dark-green);
+  color: var(--white);
+  padding: var(--spacing-lg) 0;
+  text-align: center;
+  margin-top: var(--spacing-xl);
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+.footer-logo {
+  font-family: var(--font-secondary);
+  font-size: 1.5rem;
+  margin-bottom: var(--spacing-sm);
+}
