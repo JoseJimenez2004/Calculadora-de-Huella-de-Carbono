@@ -24,7 +24,7 @@ except Exception as e:
 # Ruta raíz (HTML en navegador)
 @app.route("/", methods=["GET"])
 def index():
-    return render_template("login.html")
+    return render_template(".html")
 
 
 # Ruta de login (desde formulario o JSON)

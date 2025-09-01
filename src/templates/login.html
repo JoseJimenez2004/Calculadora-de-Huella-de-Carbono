@@ -2,72 +2,282 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ecocalculadora - Login / Registro</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
     body {
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
+      background: linear-gradient(135deg, #6a89cc, #4a69bd);
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh;
+      padding: 20px;
     }
+    
     .container {
+      display: flex;
+      max-width: 900px;
+      width: 100%;
       background: #fff;
-      padding: 20px 30px;
+      border-radius: 15px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+    }
+    
+    .welcome-section {
+      flex: 1;
+      background: linear-gradient(to bottom right, #4a69bd, #1e3799);
+      color: white;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .welcome-section::before {
+      content: "";
+      position: absolute;
+      top: -50px;
+      left: -50px;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+    }
+    
+    .welcome-section::after {
+      content: "";
+      position: absolute;
+      bottom: -80px;
+      right: -80px;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+    }
+    
+    .welcome-section h1 {
+      font-size: 32px;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .welcome-section p {
+      margin-bottom: 25px;
+      line-height: 1.6;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .tip-container {
+      background: rgba(255, 255, 255, 0.15);
       border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      width: 300px;
+      padding: 15px;
+      margin-bottom: 15px;
+      position: relative;
+      z-index: 1;
     }
-    h2 { text-align: center; }
-    input {
-      display: block;
-      width: 100%;
-      margin: 10px 0;
-      padding: 10px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
+    
+    .tip-container h3 {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+      font-size: 16px;
     }
-    button {
-      padding: 10px;
+    
+    .tip-container h3 i {
+      margin-right: 10px;
+      color: #82ccdd;
+    }
+    
+    .form-section {
+      flex: 1;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    .logo {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .logo h2 {
+      color: #4a69bd;
+      font-size: 28px;
+      font-weight: 700;
+    }
+    
+    .logo p {
+      color: #777;
+      margin-top: 5px;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+      position: relative;
+    }
+    
+    .form-group i {
+      position: absolute;
+      left: 15px;
+      top: 14px;
+      color: #4a69bd;
+    }
+    
+    .form-group input {
       width: 100%;
-      background: #28a745;
-      color: #fff;
+      padding: 12px 15px 12px 45px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: all 0.3s;
+    }
+    
+    .form-group input:focus {
+      border-color: #4a69bd;
+      box-shadow: 0 0 0 2px rgba(74, 105, 189, 0.2);
+      outline: none;
+    }
+    
+    .btn {
+      padding: 14px;
+      width: 100%;
       border: none;
-      border-radius: 5px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
       cursor: pointer;
-      margin-bottom: 10px;
+      transition: all 0.3s;
     }
-    button:hover { background: #218838; }
-    .switch-btn {
-      background: #007bff;
+    
+    .btn-primary {
+      background: #4a69bd;
+      color: white;
+      margin-bottom: 15px;
     }
-    .switch-btn:hover { background: #0069d9; }
-    p { text-align: center; color: red; }
+    
+    .btn-primary:hover {
+      background: #3c5aa8;
+      transform: translateY(-2px);
+    }
+    
+    .btn-secondary {
+      background: #f8f9fa;
+      color: #4a69bd;
+      border: 1px solid #ddd;
+    }
+    
+    .btn-secondary:hover {
+      background: #e9ecef;
+    }
+    
+    .message {
+      text-align: center;
+      margin-top: 15px;
+      min-height: 20px;
+      font-size: 14px;
+    }
+    
+    .success {
+      color: #28a745;
+    }
+    
+    .error {
+      color: #dc3545;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        max-width: 400px;
+      }
+      
+      .welcome-section {
+        display: none;
+      }
+    }
   </style>
 </head>
 <body>
 
 <div class="container">
-  <h2 id="form-title">Login</h2>
-
-  <div id="login-form">
-    <input type="text" id="login-username" placeholder="Usuario">
-    <input type="password" id="login-password" placeholder="Contraseña">
-    <button onclick="login()">Ingresar</button>
-    <button class="switch-btn" onclick="toggleForm()">Ir a Registro</button>
-    <p id="login-msg"></p>
+  <div class="welcome-section">
+    <h1>WELCOME BACK!</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minimis, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    
+    <div class="tip-container">
+      <h3><i class="fas fa-lightbulb"></i> Tips</h3>
+      <p>Ut enim ad minimis quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+    
+    <div class="tip-container">
+      <h3><i class="fas fa-lightbulb"></i> Tips</h3>
+      <p>Ut enim ad minimis quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+    
+    <div class="tip-container">
+      <h3><i class="fas fa-lightbulb"></i> Tips</h3>
+      <p>Ut enim ad minimis quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
   </div>
-
-  <div id="register-form" style="display:none;">
-    <input type="text" id="reg-username" placeholder="Usuario">
-    <input type="email" id="reg-email" placeholder="Correo">
-    <input type="password" id="reg-password" placeholder="Contraseña">
-    <button onclick="register()">Registrar</button>
-    <button class="switch-btn" onclick="toggleForm()">Ir a Login</button>
-    <p id="reg-msg"></p>
+  
+  <div class="form-section">
+    <div class="logo">
+      <h2>ECO<span style="color: #1e3799;">CALCULADORA</span></h2>
+      <p id="form-title">Inicia sesión en tu cuenta</p>
+    </div>
+    
+    <div id="login-form">
+      <div class="form-group">
+        <i class="fas fa-user"></i>
+        <input type="text" id="login-username" placeholder="Usuario">
+      </div>
+      
+      <div class="form-group">
+        <i class="fas fa-lock"></i>
+        <input type="password" id="login-password" placeholder="Contraseña">
+      </div>
+      
+      <button class="btn btn-primary" onclick="login()">Ingresar</button>
+      <button class="btn btn-secondary" onclick="toggleForm()">Crear una cuenta</button>
+      <p id="login-msg" class="message"></p>
+    </div>
+    
+    <div id="register-form" style="display:none;">
+      <div class="form-group">
+        <i class="fas fa-user"></i>
+        <input type="text" id="reg-username" placeholder="Usuario">
+      </div>
+      
+      <div class="form-group">
+        <i class="fas fa-envelope"></i>
+        <input type="email" id="reg-email" placeholder="Correo electrónico">
+      </div>
+      
+      <div class="form-group">
+        <i class="fas fa-lock"></i>
+        <input type="password" id="reg-password" placeholder="Contraseña">
+      </div>
+      
+      <button class="btn btn-primary" onclick="register()">Registrarse</button>
+      <button class="btn btn-secondary" onclick="toggleForm()">Volver a login</button>
+      <p id="reg-msg" class="message"></p>
+    </div>
   </div>
-
 </div>
 
 <script>
@@ -77,45 +287,93 @@ function toggleForm() {
   const loginForm = document.getElementById('login-form');
   const regForm = document.getElementById('register-form');
   const title = document.getElementById('form-title');
+  
   if(loginForm.style.display === "none") {
     loginForm.style.display = "block";
     regForm.style.display = "none";
-    title.textContent = "Login";
+    title.textContent = "Inicia sesión en tu cuenta";
   } else {
     loginForm.style.display = "none";
     regForm.style.display = "block";
-    title.textContent = "Registro";
+    title.textContent = "Crear una nueva cuenta";
   }
 }
 
 async function login() {
   const username = document.getElementById('login-username').value;
   const password = document.getElementById('login-password').value;
+  
+  // Validación básica
+  if (!username || !password) {
+    document.getElementById('login-msg').innerText = "Por favor, complete todos los campos";
+    document.getElementById('login-msg').className = "message error";
+    return;
+  }
 
-  const res = await fetch(`${backendUrl}/login`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ username, password })
-  });
-  const data = await res.json();
-  document.getElementById('login-msg').innerText = data.message;
+  try {
+    const res = await fetch(`${backendUrl}/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username, password })
+    });
+    
+    const data = await res.json();
+    
+    // Mostrar mensaje en la interfaz
+    document.getElementById('login-msg').innerText = data.message;
+    
+    if (data.success) {
+      document.getElementById('login-msg').className = "message success";
+      // Si el login fue exitoso, redirigir a categories.html después de un breve retraso
+      setTimeout(() => {
+        window.location.href = "categoriesuser.html";
+      }, 1000);
+    } else {
+      document.getElementById('login-msg').className = "message error";
+    }
+  } catch (error) {
+    document.getElementById('login-msg').innerText = "Error de conexión. Intente nuevamente.";
+    document.getElementById('login-msg').className = "message error";
+  }
 }
 
 async function register() {
   const username = document.getElementById('reg-username').value;
   const email = document.getElementById('reg-email').value;
   const password = document.getElementById('reg-password').value;
+  
+  // Validación básica
+  if (!username || !email || !password) {
+    document.getElementById('reg-msg').innerText = "Por favor, complete todos los campos";
+    document.getElementById('reg-msg').className = "message error";
+    return;
+  }
 
-  const res = await fetch(`${backendUrl}/register`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ username, email, password })
-  });
-  const data = await res.json();
-  document.getElementById('reg-msg').innerText = data.message;
+  try {
+    const res = await fetch(`${backendUrl}/register`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username, email, password })
+    });
+    
+    const data = await res.json();
+    document.getElementById('reg-msg').innerText = data.message;
+    
+    if (data.success) {
+      document.getElementById('reg-msg').className = "message success";
+      // Cambiar al formulario de login después de un registro exitoso
+      setTimeout(() => {
+        toggleForm();
+      }, 1500);
+    } else {
+      document.getElementById('reg-msg').className = "message error";
+    }
+  } catch (error) {
+    document.getElementById('reg-msg').innerText = "Error de conexión. Intente nuevamente.";
+    document.getElementById('reg-msg').className = "message error";
+  }
 }
 </script>
 
 </body>
 </html>
-    
