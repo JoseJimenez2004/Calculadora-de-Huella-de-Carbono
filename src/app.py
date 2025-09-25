@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify
 import psycopg2
 from flask_cors import CORS
 import bcrypt
@@ -21,20 +21,16 @@ except Exception as e:
     print("❌ Error de conexión a PostgreSQL:", e)
 
 
-# Ruta raíz (HTML en navegador)
+# Ruta raíz (para pruebas)
 @app.route("/", methods=["GET"])
 def index():
-    return render_template(".html")
+    return jsonify({"message": "Servidor Flask funcionando 🚀"})
 
 
-# Ruta de login (desde formulario o JSON)
+# Ruta de login
 @app.route('/login', methods=['POST'])
 def login():
-    if request.is_json:
-        data = request.get_json()
-    else:
-        data = request.form  # <-- Para soportar formulario HTML también
-
+    data = request.get_json()
     username = data['username']
     password = data['password'].encode('utf-8')
 
@@ -51,14 +47,10 @@ def login():
         return jsonify({"success": False, "message": "Contraseña incorrecta"})
 
 
-# Ruta de registro (desde formulario o JSON)
+# Ruta de registro
 @app.route('/register', methods=['POST'])
 def register():
-    if request.is_json:
-        data = request.get_json()
-    else:
-        data = request.form  # <-- Para soportar formulario HTML también
-
+    data = request.get_json()
     username = data['username']
     email = data['email']
     password = data['password'].encode('utf-8')
